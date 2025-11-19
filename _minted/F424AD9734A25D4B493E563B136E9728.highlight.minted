@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{+w}{      }Total\PYG{+w}{ }de\PYG{+w}{ }muestras:
+\PYG{+w}{      }\PYG{l+m}{51321}
+\PYG{+w}{      }Muestras\PYG{+w}{ }de\PYG{+w}{ }entrenamiento:
+\PYG{+w}{      }\PYG{l+m}{35821}
+\PYG{+w}{      }Muestras\PYG{+w}{ }de\PYG{+w}{ }validación:
+\PYG{+w}{      }\PYG{l+m}{15500}
+\end{MintedVerbatim}

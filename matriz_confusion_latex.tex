@@ -1,0 +1,67 @@
+% MATRIZ DE CONFUSIÓN - ESTILO COHERENTE CON EL PROYECTO
+
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.8} % Espaciado entre filas
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \multicolumn{2}{|c|}{} & \multicolumn{2}{c|}{\textbf{Clases Predichas}} \\
+    \cline{3-4}
+    \multicolumn{2}{|c|}{} & \textbf{No Agrícola (0)} & \textbf{Agrícola (1)} \\
+    \hline
+    \multirow{2}{*}{\rotatebox{90}{\textbf{Clases Reales}}} 
+    & \textbf{No Agrícola (0)} & \cellcolor{green!30}\textbf{9481} & \cellcolor{red!30}\textbf{4} \\
+    \cline{2-4}
+    & \textbf{Agrícola (1)} & \cellcolor{red!30}\textbf{14} & \cellcolor{green!30}\textbf{6001} \\
+    \hline
+  \end{tabular}
+  \caption{\centering Matriz de confusión del modelo Random Forest para clasificación de cobertura agrícola en Lambayeque. Los valores en verde representan clasificaciones correctas (Verdaderos Positivos y Verdaderos Negativos), mientras que los valores en rojo representan errores de clasificación (Falsos Positivos y Falsos Negativos).}
+  \label{tab:matriz_confusion}
+\end{table}
+
+% VERSIÓN ALTERNATIVA MÁS SIMPLE (sin colores)
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{|m{3cm}|m{2.5cm}|m{2.5cm}|}
+    \hline
+    \multicolumn{1}{|>{\centering}m{3cm}|}{\textbf{}} & 
+    \multicolumn{1}{>{\centering}m{2.5cm}|}{\textbf{Predicho: No Agrícola}} & 
+    \multicolumn{1}{>{\centering}m{2.5cm}|}{\textbf{Predicho: Agrícola}} \\
+    \hline
+    \centering\textbf{Real: No Agrícola} & 
+    \centering\large\textbf{9481} & 
+    \centering\large\textbf{4} \\
+    \hline
+    \centering\textbf{Real: Agrícola} & 
+    \centering\large\textbf{14} & 
+    \centering\large\textbf{6001} \\
+    \hline
+  \end{tabular}
+  \caption{\centering Matriz de confusión para el modelo de clasificación de cobertura agrícola (n = 15,500 píxeles de validación).}
+  \label{tab:matriz_confusion_simple}
+\end{table}
+
+% VERSIÓN CON INTERPRETACIÓN DETALLADA
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.6}
+  \begin{tabular}{|m{3.5cm}|m{2.2cm}|m{2.2cm}|m{2.2cm}|}
+    \hline
+    \multicolumn{2}{|c|}{\textbf{}} & \multicolumn{2}{c|}{\textbf{Clasificación Predicha}} \\
+    \cline{3-4}
+    \multicolumn{2}{|c|}{\textbf{}} & \centering\textbf{No Agrícola} & \centering\textbf{Agrícola} \\
+    \hline
+    \multirow{2}{3.5cm}{\centering\textbf{Clasificación Real}} 
+    & \centering\textbf{No Agrícola} & 
+    \centering\textbf{9481}\newline\small{(TN)} & 
+    \centering\textbf{4}\newline\small{(FP)} \\
+    \cline{2-4}
+    & \centering\textbf{Agrícola} & 
+    \centering\textbf{14}\newline\small{(FN)} & 
+    \centering\textbf{6001}\newline\small{(TP)} \\
+    \hline
+  \end{tabular}
+  \caption{\centering Matriz de confusión con interpretación de resultados. TN: Verdaderos Negativos, FP: Falsos Positivos, FN: Falsos Negativos, TP: Verdaderos Positivos.}
+  \label{tab:matriz_confusion_detallada}
+\end{table}

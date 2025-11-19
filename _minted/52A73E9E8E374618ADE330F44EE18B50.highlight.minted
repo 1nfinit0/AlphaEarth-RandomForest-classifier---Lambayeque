@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{validation}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{validationSamples}\PYG{p}{.}\PYG{n+nx}{classify}\PYG{p}{(}\PYG{n+nx}{classifier}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{confusionMatrix}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{validation}\PYG{p}{.}\PYG{n+nx}{errorMatrix}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}clase\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}classification\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nx}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Matriz de Confusión:\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{confusionMatrix}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

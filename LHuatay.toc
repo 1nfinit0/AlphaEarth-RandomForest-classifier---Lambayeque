@@ -1,0 +1,49 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{}{}{section*.1}%
+\contentsline {section}{\numberline {1}\centering INTRODUCCIÓN}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Problematización}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Justificación}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Objetivos generales y específicos}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Alcances y limitaciones}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}\centering CAPÍTULO I: FUNDAMENTOS TEÓRICOS}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Fisiología vegetal y espectro electromagnético}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Espectroscopía}{5}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Antecedentes históricos}{5}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Principios básicos}{5}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Técnicas espectroscópicas}{6}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Sensoramiento y teledetección satelital}{7}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Sensores: fundamentos y tipos}{7}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Teledetección satelital}{8}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Estructura de datos}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Resolución}{9}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Resolución espacial}{9}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Resolución temporal}{10}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}Resolución espectral}{10}{subsubsection.2.5.3}%
+\contentsline {subsubsection}{\numberline {2.5.4}Resolución radiométrica}{10}{subsubsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.6}Satelites de teledetección}{12}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Sentinel-2}{12}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}Landsat 8}{13}{subsubsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.7}Índices espectrales aplicados a agricultura}{13}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {2.7.1}Fundamento matemático}{14}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.2}Índices espectrales más utilizados en agricultura}{16}{subsubsection.2.7.2}%
+\contentsline {section}{\numberline {3}\centering CAPÍTULO II APLICACIÓN PRÁCTICA: CLASIFICACIÓN DE COBERTURA AGRÍCOLA}{17}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Flujo de trabajo}{17}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Materiales}{18}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Metodología}{19}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Procedimiento}{20}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Etiquetas de entrenamiento}{20}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Generación del dataset de entrenamiento}{22}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Generación del modelo de clasificación supervisada}{23}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Aplicación del modelo de clasificación supervisada}{23}{subsubsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.5}Resultados}{24}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Validación del modelo de clasificación supervisada}{25}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Matriz de confusión}{26}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Precisión General del modelo (overall accuracy)}{26}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}Métricas de área calculada}{27}{subsubsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.7}Análisis y discusión de resultados}{28}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}Clasificación en áreas cubiertas por nubes}{28}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}Clasificación de áreas con vegetación natural}{29}{subsubsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.7.3}Cuerpos de agua}{30}{subsubsection.3.7.3}%
+\contentsline {subsubsection}{\numberline {3.7.4}Comparación con otros productos satelitales}{30}{subsubsection.3.7.4}%
+\contentsline {subsection}{\numberline {3.8}Conclusiones}{32}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Recomendaciones}{33}{subsection.3.9}%

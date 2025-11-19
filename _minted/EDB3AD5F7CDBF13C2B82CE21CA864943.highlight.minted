@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{aoiLambayeque}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{ee}\PYG{p}{.}\PYG{n+nx}{FeatureCollection}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}projects/test\PYGZhy{}hsluis4326/assets/aoiLambayeque\PYGZdq{}}\PYG{p}{)}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n+nx}{etiquetas}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{ee}\PYG{p}{.}\PYG{n+nx}{FeatureCollection}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}projects/test\PYGZhy{}hsluis4326/assets/etiquetas\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

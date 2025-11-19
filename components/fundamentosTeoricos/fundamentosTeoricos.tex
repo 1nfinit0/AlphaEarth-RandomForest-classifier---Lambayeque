@@ -1,0 +1,702 @@
+\section{\texorpdfstring{\centering CAPÍTULO I: FUNDAMENTOS TEÓRICOS}{CAPÍTULO I: FUNDAMENTOS TEÓRICOS}}
+
+Para entender cómo la información satelital puede ser utilizada en la agricultura de precisión, es fundamental revisar los conceptos teóricos que sustentan esta tecnología y su aplicación en el ámbito agrícola. Es importante conocer la problemática que resuelve, de donde y cómo provienen los datos que toma y la vía por el cual se procesan para obtener información útil.
+
+\subsection{Fisiología vegetal y espectro electromagnético}
+
+La fisiología vegetal es la rama de la biología que estudia las funciones y procesos vitales de las plantas. Comprender cómo las plantas interactúan con la luz y otros factores ambientales es crucial para el uso efectivo de la información satelital en la agricultura de precisión. Las plantas por medio del proceso de la fotosíntesis convierten la energía lumínica en energía química, utilizando dióxido de carbono y agua para producir glucosa y oxígeno. La clorofila, el pigmento verde en las hojas, es responsable de absorber la luz, según \parencite{Bruning2020}, las plantas absorben principalmente la luz en las regiones azul (400-500 nm) y roja (600-700 nm) del espectro electromagnético, mientras que reflejan la luz en la región verde (500-600 nm), lo que explica su color característico. Además, las plantas reflejan fuertemente la luz en el rango del infrarrojo cercano (700-1300 nm).
+
+
+\renewcommand{\arraystretch}{1.5} % Ajusta la altura de las filas
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{m{2cm} m{3cm} m{3cm} m{4.4cm}}
+    \multicolumn{1}{>{\centering}m{2cm}}{\textbf{Rango}} &
+    \multicolumn{1}{>{\centering}m{3cm}}{\textbf{Factores}} &
+    \multicolumn{1}{>{\centering}m{3cm}}{\textbf{Interacción}} &
+    \multicolumn{1}{>{\centering}m{4.4cm}}{\textbf{Detalles}} \\
+    \hline
+    \centering\small Visible (VIS) $350-700$ nm &
+    \small Pigmentos fotosintéticos: clorofila, carotenoides &
+    \centering\small absorción $ > $ reflexión &
+    \small Picos de absorción de clorofila en 420, 470 y 660 nm. La fuerte absorción en azul y rojo genera un pico de reflectancia en el verde (~550 nm), responsable del color característico de las plantas. Los carotenoides absorben entre 440–480 nm.     \\
+    \hline
+    \centering\small Infrarrojo cercano (NIR) $700-1100$ nm &
+    \small Estructura celular interna: paredes celulares, espacios de aire, contenido de agua y grado de desarrollo foliar. &
+    \centering\small absorción $ < $ reflexión     &
+    \small La transición de baja reflectancia en el rojo a alta en el NIR se denomina “borde rojo” (red edge), que ocurre entre 680–720 nm. Existen bandas de absorción por agua en 970 y 1200 nm.     \\
+    \hline
+    \centering\small Infrarrojo de onda corta (SWIR) $1100-2500$ nm &
+    \small Contenido de agua y bioquímica de la hoja: proteínas, celulosa, lignina, almidón. &
+    \centering\small Absorción dominada por el agua.     &
+    \small Bandas de absorción de agua en 1450 y 1940 nm. En vegetación seca, al reducirse el agua, se hacen visibles las absorciones de lignina, celulosa y almidón.     \\
+    \hline
+  \end{tabular}
+  \caption{\centering Interacción de la luz con la vegetación en diferentes rangos del espectro electromagnético. Adaptado de \parencite{Bruning2020}.}
+  \label{tab:interaccion_luz_vegetacion}
+\end{table}
+
+Con ello podemos entender que una forma de poder monitorear el estado de las plantas es a través del análisis de la luz que reflejan en diferentes longitudes de onda. Considerando que una planta saludable cumplirá con el proceso de fotosíntesis de manera óptima, mientras que una planta estresada o enferma mostrará alteraciones en su capacidad para absorber y reflejar la luz, podremos utilizar esta información para evaluar la salud y el vigor de los cultivos. Esta metodología es la base para muchas aplicaciones de teledetección en la agricultura de precisión. Teniendo en cuenta que las plantas reflejan fuertemente en el infrarrojo cercano (NIR) además de ser un indicador de contenido de agua y vigor fotosintético, los sensores satelitales que capturan esta banda son especialmente útiles para monitorear la vegetación.
+
+\newpage
+
+De acuerdo a ello, a continuación se muestran las figuras comparativas:
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/absorcion.png}
+  \caption{\centering Curva típica de reflectancia espectral de la vegetación, mostrando la absorción en azul y rojo, el pico de reflectancia en verde y el aumento significativo en el infrarrojo cercano (NIR). Datos generales e ilustrativos. Fuente: \parencite{Bruning2020}.}
+  \label{fig:curva_reflectancia_vegetacion}
+\end{figure}
+
+Una vez entendemos lo que observamos cuando vemos una planta, es importante conocer cómo aprovechar esta información, cómo tomamos los datos, y cómo los procesamos para obtener información útil.
+
+\subsection{Espectroscopía}
+
+Visto ya la interacción de la luz con la vegetación, es importante conocer el cómo podríamos medir esa luz reflejada para poder obtener los datos sobre los cuales analizaremos el estado de los cultivos. Esta es una cuestión que se aborda desde la espectroscopía, ciencia que tiene como objetivo estudiar la interacción entre la radiación electromagnética y la materia. \parencite{Xia2023} cataloga a la espectroscopía como una técnica establecida y eficaz utilizada ampliamente en las últimas décadas debido a sus excelentes resultados en la detección de la calidad agrícola. Técnicas como la espectroscopía visible y de infrarrojo cercano (Vis-NIR) y las imágenes hiperespectrales (HSI) son herramientas maduras y eficientes para la caracterización física y química de productos agrícolas sin destruirlos.
+
+\subsubsection{Antecedentes históricos}
+
+El desarrollo de la espectroscopía se remonta a varios siglos atrás. En el siglo XVII, Isaac Newton fue uno de los primeros en estudiar la dispersión de la luz a través de un prisma, lo que llevó al descubrimiento del espectro visible. Posteriormente, en el siglo XIX, científicos como Joseph von Fraunhofer y Gustav Kirchhoff realizaron importantes contribuciones al campo al analizar las líneas espectrales emitidas por diferentes elementos químicos. El avance de la espectroscopía continuó con el desarrollo de técnicas como la espectroscopía infrarroja y ultravioleta, que permitieron estudiar una gama más amplia del espectro electromagnético. En el siglo XX, la invención de instrumentos más sofisticados, como los espectrómetros y los detectores electrónicos, facilitó mediciones más precisas y rápidas, ampliando aún más las aplicaciones de la espectroscopía en diversas disciplinas científicas e industriales.
+
+\subsubsection{Principios básicos}
+
+La espectroscopía se basa en la interacción de la radiación electromagnética con la materia. Cuando la luz incide sobre un objeto, parte de ella es absorbida, reflejada o transmitida. La cantidad de luz absorbida y reflejada varía según la composición química y las propiedades físicas del material. Al analizar el espectro de luz reflejada por un objeto, es posible obtener información sobre su composición y estado. Se utilizan diferentes longitudes de onda para investigar características específicas de los materiales, lo que permite identificar compuestos químicos, determinar concentraciones y evaluar propiedades físicas como la textura y la estructura, entre otras.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[x=\textwidth-1cm,y=10cm]
+\begin{scope}
+
+  % Onda infrarrojo medio (MIR)
+  \draw[thick,red!30!black,decorate,decoration={snake,amplitude=0.32cm,segment length=0.95cm}] (0,0.75) -- (0.26,0.75);
+
+  % Onda infrarrojo lejano (FIR)
+  \draw[thick,black!70!red,decorate,decoration={snake,amplitude=0.36cm,segment length=1.1cm}] (0.01,0.79) -- (0.27,0.79);
+
+  % Onda infrarroja (longitud de onda larga)
+  \draw[thick,red!50!black,decorate,decoration={snake,amplitude=0.28cm,segment length=0.8cm}] (0.02,0.71) -- (0.25,0.71);
+
+  % Onda rojo profundo (cerca del IR)
+  \draw[thick,red!80!black,decorate,decoration={snake,amplitude=0.26cm,segment length=0.75cm}] (0.01,0.68) -- (0.26,0.68);
+
+  % Onda roja
+  \draw[thick,red,decorate,decoration={snake,amplitude=0.24cm,segment length=0.7cm}] (0,0.65) -- (0.25,0.65);
+
+  % Onda rojo-naranja
+  \draw[thick,red!70!orange,decorate,decoration={snake,amplitude=0.22cm,segment length=0.65cm}] (0.03,0.61) -- (0.27,0.61);
+
+  % Onda naranja
+  \draw[thick,orange,decorate,decoration={snake,amplitude=0.21cm,segment length=0.6cm}] (0.01,0.57) -- (0.25,0.57);
+
+  % Onda amarillo-naranja
+  \draw[thick,orange!70!yellow,decorate,decoration={snake,amplitude=0.19cm,segment length=0.55cm}] (0.02,0.53) -- (0.26,0.53);
+
+  % Onda amarilla
+  \draw[thick,yellow,decorate,decoration={snake,amplitude=0.18cm,segment length=0.5cm}] (0,0.49) -- (0.27,0.49);
+
+  % Onda amarillo-verde
+  \draw[thick,yellow!70!green,decorate,decoration={snake,amplitude=0.16cm,segment length=0.45cm}] (0.03,0.46) -- (0.25,0.46);
+
+  % Onda verde
+  \draw[thick,green!70!black,decorate,decoration={snake,amplitude=0.15cm,segment length=0.4cm}] (0.01,0.43) -- (0.26,0.43);
+
+  % Onda verde-azul
+  \draw[thick,green!50!blue,decorate,decoration={snake,amplitude=0.13cm,segment length=0.33cm}] (0.02,0.40) -- (0.25,0.40);
+
+  % Onda azul
+  \draw[thick,blue,decorate,decoration={snake,amplitude=0.11cm,segment length=0.23cm}] (0,0.37) -- (0.26,0.37);
+
+  % Onda azul profundo
+  \draw[thick,blue!80!black,decorate,decoration={snake,amplitude=0.09cm,segment length=0.18cm}] (0.03,0.35) -- (0.27,0.35);
+
+  % Onda violeta
+  \draw[thick,blue!50!violet,decorate,decoration={snake,amplitude=0.08cm,segment length=0.14cm}] (0.01,0.32) -- (0.25,0.32);
+
+      % Flecha apuntando a la izquierda (sin usar -->)
+      \draw[thick,gray!70!black] (0.2,0.15) -- (0.05,0.15);
+      \draw[thick,gray!70!black] (0.18,0.17) -- (0.2,0.15) -- (0.18,0.13);
+      \node[below] at (0.125,0.12) {\footnotesize \textbf{Luz incidente}};
+
+
+
+
+
+    \node at (0.5,0.5) {\includegraphics[width=0.25\textwidth]{assets/Chlorophyll A.png}};
+    \node at (0.5,-0.05) {\textbf{Clorofila A}};
+
+
+    % Onda infrarrojo lejano (FIR)
+    % Onda infrarrojo lejano (FIR) - reflejada (degradado de negro a rojo oscuro)
+    \draw[thick,black!90!red,decorate,decoration={snake,amplitude=0.36cm,segment length=1.1cm}] (0.71,0.79) -- (0.94,0.79);
+
+    % Onda infrarrojo medio (MIR) - reflejada (degradado de negro a rojo oscuro, menos intenso)
+    \draw[thick,black!70!red,decorate,decoration={snake,amplitude=0.32cm,segment length=0.95cm}] (0.72,0.75) -- (0.93,0.75);
+
+    % Onda infrarrojo cercano (NIR) - reflejada (degradado de negro a rojo oscuro, aún menos intenso)
+    \draw[thick,black!50!red,decorate,decoration={snake,amplitude=0.28cm,segment length=0.8cm}] (0.73,0.71) -- (0.95,0.71);
+
+    % Onda infrarrojo de onda corta (SWIR) - reflejada parcialmente, no absorbida por la planta (puedes ajustar el color si lo deseas)
+    \draw[thick,red!60!black,decorate,decoration={snake,amplitude=0.30cm,segment length=0.9cm}] (0.72,0.68) -- (0.94,0.68);
+
+    % Onda verde (VIS) - reflejada, responsable del color de la planta
+    \draw[thick,green!70!black,decorate,decoration={snake,amplitude=0.15cm,segment length=0.4cm}] (0.71,0.43) -- (0.95,0.43);
+
+    % Onda amarillo-verde (VIS) - reflejada parcialmente
+    \draw[thick,yellow!70!green,decorate,decoration={snake,amplitude=0.16cm,segment length=0.45cm}] (0.73,0.46) -- (0.94,0.46);
+
+    % Onda amarillo (VIS) - reflejada parcialmente
+    \draw[thick,yellow,decorate,decoration={snake,amplitude=0.18cm,segment length=0.5cm}] (0.72,0.49) -- (0.93,0.49);
+
+    % Etiquetas de salida
+    % Flecha apuntando a la izquierda (sin usar -->)
+      \draw[thick,gray!70!black] (0.75,0.15) -- (0.92,0.15);
+      \draw[thick,gray!70!black] (0.89,0.17) -- (0.92,0.15) -- (0.89,0.13);
+      \node[below] at (0.84,0.12) {\footnotesize \textbf{Luz reflejada}};
+
+  \end{scope}
+
+\end{tikzpicture}
+\captionsetup{hypcap=false}
+\captionof{figure}{\centering Interacción de la luz con una molécula de clorofila-A donde se observa cómo absorbe específicas longitudes de ondas y refleja otras. Fuente: elaboración propia.}
+\label{fig:interaccion_luz_clorofila}
+\end{figure}
+
+
+
+\subsubsection{Técnicas espectroscópicas}
+
+Existen diversas técnicas espectroscópicas, cada una con sus propias aplicaciones y ventajas. Algunas de las técnicas más comunes incluyen:
+
+\begin{itemize}
+  \item \textbf{Espectroscopía de absorción:} Mide la cantidad de luz absorbida por un material en función de la longitud de onda. Es útil para identificar compuestos químicos y determinar concentraciones.
+  \item \textbf{Espectroscopía de emisión:} Analiza la luz emitida por un material cuando es excitado por una fuente externa. Se utiliza para estudiar la composición elemental y las propiedades electrónicas.
+  \item \textbf{Espectroscopía de reflectancia:} Examina la luz reflejada por una superficie. Es especialmente relevante en aplicaciones agrícolas, ya que permite evaluar la salud y el vigor de las plantas mediante el análisis de la luz reflejada en diferentes longitudes de onda.
+\end{itemize}
+
+Entendido estos conceptos, se puede comprender que al analizar la luz que refleja determinado cultivo en diferentes longitudes de onda, podemos obtener información valiosa sobre su estado de salud, contenido de agua y otros parámetros importantes para la agricultura de precisión, sin embargo, en la práctica no basta con analizar una sola planta, sino que se requiere analizar grandes extensiones de terreno, para lo cual es necesario poder resolver la limitación espacial que tienen los sensores espectroscópicos tradicionales, para lo cual se recurre a la teledetección satelital.
+
+\newpage
+
+\subsection{Sensoramiento y teledetección satelital}
+
+El análisis de la luz reflejada por las plantas a través de técnicas espectroscópicas es una solución efectiva para evaluar la salud y el vigor de determinado cultivo, entendido esto podríamos preguntarnos cómo obtener los datos de esta luz reflejada, si bien, los ojos humanos pueden percibir la luz visible, no son capaces de detectar otras longitudes de onda como el infrarrojo cercano (NIR), que es crucial para evaluar lo que se espera de un cultivo. Es por esta necesidad que el avance tecnológico ha permitido el desarrollo de los sensores ópticos, dispositivos diseñados para medir la radiación electromagnética en diferentes rangos del espectro, incluyendo los que no son visibles para el ojo humano. Según \parencite{Berger2022}, el análisis de 96 estudios de investigación en lo que respecta a la teledetección, reveló que la combinación de sensores que cubren los dominios Visible (VIS), Infrarrojo Cercano (NIR) e Infrarrojo Térmico (TIR) fue la categoría más grande y comúnmente utilizada.
+
+\subsubsection{Sensores: fundamentos y tipos}
+
+Un sensor es un dispositivo que detecta y mide una propiedad física o química específica y la convierte en una señal que puede ser interpretada. En el contexto de los sensores utilizados en la teledetección se tienen pasivos o activos.
+
+\begin{itemize}
+  \item \textbf{Sensores pasivos:} Estos sensores detectan la radiación electromagnética que es emitida o reflejada por los objetos en la superficie terrestre. No emiten energía propia, sino que dependen de fuentes externas de energía, como la luz solar. Un ejemplo común de sensor pasivo es una cámara fotográfica o un espectrómetro que mide la luz reflejada por algún material.
+  \item \textbf{Sensores activos:} Estos sensores emiten su propia energía y pueden medir radiación reflejada, tiempo de captura y otros parámetros. Un ejemplo típico de sensor activo es el radar, que emite ondas de radio y mide el tiempo que tarda en regresar la señal reflejada desde la superficie terrestre.
+\end{itemize}
+
+Dentro del ámbito del sensoramiento dedicado al monitoreo agrícola, los sensores pasivos son comúnmente utilizados, ya que permiten capturar la luz reflejada por las plantas en diferentes longitudes de onda, proporcionando información valiosa sobre su estado como se explicó anteriormente.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[x=\textwidth-1cm,y=10cm]
+    \begin{scope}
+
+      \node[below, font=\large] at (0.06,0.9) {\textbf{Emisión}};
+      \node[below, align=center, font=\small, text width=0.16\textwidth] at (0.06,0.55) {Tiene al sol como fuente principal de energía. La radiación solar incide sobre la superficie terrestre.};
+
+      \node[below, font=\large] at (0.26,0.9) {\textbf{Incidencia}};
+      \node[below, align=center, font=\small, text width=0.15\textwidth] at (0.26,0.55) {La radiación solar es absorbida, transmitida o reflejada por los objetos en la superficie terrestre incluida covertura vegetal.};
+
+      \node[below, font=\large] at (0.485,0.9) {\textbf{Detección}};
+      \node[below, align=center, font=\small, text width=0.17\textwidth] at (0.48,0.55) {Los sensores hechos de semicondutores generan una señal eléctrica proporcional a la radiación reflejada que reciben.};
+
+      \node[below, font=\large] at (0.7,0.9) {\textbf{Conversión}};
+      \node[below, align=center, font=\small, text width=0.18\textwidth] at (0.69,0.55) {Dicha señal eléctrica es convertida en datos digitales (DN) mediante un conversor analógico-digital (ADC).};
+
+      \node[below, font=\large] at (0.92,0.9) {\textbf{Procesamiento}};
+      \node[below, align=center, font=\small, text width=0.18\textwidth] at (0.92,0.55) {Luego de la corrección radiométrica y geométrica, los valores radiométricos se convierten en reflectancia o emisión térmica};
+
+      \node at (0.5,0.7) {\includegraphics[width=0.95\textwidth]{assets/flujo-sesnor.png}};
+    \end{scope}
+  \end{tikzpicture}
+  \captionsetup{hypcap=false}
+  \captionof{figure}{\centering Flujo de trabajo general para la adquisición y procesamiento de datos mediante sensores pasivos en la detección del espectro electromagnético. Fuente: Elaboración propia.}
+  \label{fig:flujo_trabajo_sensores}
+\end{figure}
+
+\subsubsection{Teledetección satelital}
+
+La necesidad de monitorear grandes extensiones de terreno, como campos agrícolas, ha llevado al desarrollo de la teledetección, que es la adquisición de información sobre un objeto o área sin estar en contacto directo con él. Originalmente, según \parencite{Ram2024}, la imagen hiperespectral (HSI) se utilizaba predominantemente con plataformas orbitales (satélites) y suborbitales (aviones). El procesamiento de estos datos se centraba principalmente en correcciones atmosféricas y ortorectificación. Sin embargo, en los últimos veinte años, ha habido un aumento en el uso de variantes portátiles y de mano de estos sensores. Esta tendencia indica un cambio positivo desde las aplicaciones geoespaciales hacia las aplicaciones en el campo (in-field). Estos nuevos sensores, montados en vehículos terrestres (UGV), vehículos aéreos no tripulados (UAV) o usados manualmente, ofrecen una alta resolución espacial y temporal.
+
+La teledetección utiliza una variedad de plataformas para llevar los sensores a diferentes altitudes y obtener datos desde diversas perspectivas. Estas plataformas incluyen satélites, aviones, drones y vehículos terrestres. Cada plataforma tiene sus propias ventajas y limitaciones en términos de cobertura, resolución y costos operativos. Con esta metodología de toma de datos, los resultado obtenidos por sensores simples se vuelven mucho más utiles al generar ya no arreglos de datos de una sola medición, sino que se obtienen estructuras matriciales donde cada elemento de la matriz representa un píxel, generando así una imagen con información espacial, temporal, espectral y radiométrica.
+
+A continuación se muestra el proceso de captura de datos mediante teledetección satelital:
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.95\textwidth]{assets/recoleccion-sat.png}
+  \caption{\centering Dinámica del movimiento del planeta al rededor del Sol y los satélites artificiales de teledetección (izquierda) muestra tanto la fuente de emisión como la superficie de reflectancia que finalmente es capturada por los sensores de distintos tipos, este es el proceso por el cual se consiguen los diferentes productos derivados (derecha). Fuente: \parencite{Brown2025}.}
+  \label{fig:proceso_teledeteccion_satelital}
+\end{figure}
+
+\subsection{Estructura de datos}
+
+El objeto de medición de los sensores enfocados a teledetección y que están montados en satélites es la radiación electromagnética que es reflejada por la superficie terrestre, la cual es capturada en específicas longitudes de onda. A fin de poder manipular computacionalmente estos datos, la conversión de señal eléctrica a datos digitales (DN) mediante un conversor analógico-digital (ADC) genera un valor numérico en base 2 que representa la intensidad de la radiación detectada en una banda espectral específica. La capacidad de un sensor para discriminar entre niveles de intensidad se denomina resolución radiométrica, la cual está determinada por el número de bits utilizados en el ADC. Por ejemplo, un sensor con una resolución radiométrica de 8 bits puede representar 256 niveles diferentes de intensidad $2^8 = 256$, mientras que un sensor con una resolución de 16 bits puede representar 65,536 niveles $2^{16} = 65,536$. Una mayor resolución radiométrica permite detectar diferencias más sutiles en la intensidad de la radiación, lo que puede ser crucial para aplicaciones que requieren un análisis detallado de la reflectancia o emisión térmica. \parencite{Aburaed2023} menciona que la mayoría de los sensores satelitales comerciales tienen una resolución radiométrica de 8 bits, aunque algunos sensores avanzados pueden ofrecer resoluciones de hasta 12 o 16 bits.
+
+Estos valores digitales (DN) son organizados en una estructura matricial donde cada elemento de la matriz representa el nivel de intensidad de radiación detectada en una ubicación espacial específica, esta forma de organizar los datos es particularmente últil porque puede guardar información espacial y más importante, puede ser representada visualmente como una imagen, donde cada píxel de la imagen corresponde a un elemento de la matriz. Esto facilita la interpretación y análisis de los datos, permitiendo identificar patrones espaciales y variaciones en la reflectancia o emisión térmica a lo largo de la superficie terrestre.
+
+A continuación se muestra el proceso de recolección de datos y su estructura matricial:
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[x=\textwidth-1cm,y=10cm]
+    \begin{scope}
+      
+      \node at (0,0.5) {\includegraphics[width=0.25\textwidth]{assets/land.png}};
+      \node at (0.,0.25) {\textbf{Representación de terreno}};
+
+      \node at (0.18,0.5) {\includegraphics[width=0.07\textwidth]{assets/arrow.png}};
+
+      \node at (0.36,0.5) {\includegraphics[width=0.25\textwidth]{assets/Sentinel2Sat.png}};
+      \node at (0.35,0.25) {\textbf{Sentinel-2}};
+
+      \node at (0.48,0.5) {\includegraphics[width=0.07\textwidth]{assets/arrow.png}};
+
+      % Matriz numérica 5x5 representando valores digitales (DN) con notación de llaves
+      \node at (0.71,0.5) {
+        $\left\{
+        \begin{array}{ccccc}
+          0.85 & 0.95 & 0.7 & 0.83 & 0.92\\
+          0.80 & 0.82 & 0.84 & 0.86 & 0.86\\
+          0 & 0.02 & 0.04 & 0.1 & 0.09\\
+          1 & 0.9 & 0.89 & 0.4 & 0\\
+          0.7 & 0.01 & 0.02 & 0.01 & 0\\
+        \end{array}
+        \right\}$
+      };
+      \node at (0.72,0.25) {\textbf{Matriz de reflectancia}};
+    \end{scope}
+
+\end{tikzpicture}
+\captionsetup{hypcap=false}
+\captionof{figure}{\centering Proceso de captura de datos mediante teledetección satelital y su estructura matricial como producto. Nótese como la matriz de datos representa en valores de 0 a 1 el grado de energía reflejada por la superficie vegetal, esto gracias a los fundamentos de la fisiología vegetal y la espectroscopía. Fuente: elaboración propia.}
+\label{fig:interaccion_luz_clorofilaa}
+\end{figure}
+
+\subsection{Resolución}
+
+Los fundamentos teóricos de toma de datos mediante teledetección satelital se basan en la captura de energía electromagnética reflejada, como si de una cámara fotográfica se tratase, en ese sentido, existen ciertas propiedades que se comparten, entre ellas la resolución. La resolución se refiere a la capacidad de conseguir detalle en una toma de datos, especialmente en lo que respecta a sensores de álta precisión montados en plataformas satelitales, esta resolución se da en el espacio de captura, en el tiempo, la intensidad de radiación o en el espectro electromagnético. Para entender mejor estos conceptos, a continuación se describen los tipos de resolución que son relevantes en el contexto de la teledetección satelital enfocada al monitoreo agrícola:
+
+\subsubsection{Resolución espacial}
+
+Según \parencite{Kupidura2022}, la resolución espacial en una imagen satelital se describe como un factor determinante para entender la calidad de visibilidad de los objetos en la superficie terrestre. Esto se relaciona profundamente con el tamaño de pixel que se presenta como una medida directa de resolución espacial.
+
+La resolución espacial se refiere al tamaño del área en la superficie terrestre que es representada por un solo píxel en una imagen satelital. Una resolución espacial más alta significa que cada píxel cubre un área más pequeña, lo que permite distinguir detalles más finos en la imagen mientras que una resolución espacial más baja significa que cada píxel cubre un área más grande, lo que puede resultar en una pérdida de detalle. Sin embargo, una resolución espacial baja no necesariamente implica la pérdida de información, en todo ámbito esto depende de la aplicación específica y los objetivos del análisis. Por ejemplo, si se quisiera monitorear cambios meteorológicos a gran escala, una resolución espacial baja podría ser suficiente e inclusive, conveniente debido a la necesidad de cubrir grandes áreas, mientras que para aplicaciones agrícolas que requieren un análisis detallado de cultivos específicos, una resolución espacial alta sería más adecuada.
+
+\subsubsection{Resolución temporal}
+
+En líneas generales, la resolución temporal en una imagen satelital se refiere a la frecuencia teórica con la que un satélite pasa sobre el mismo lugar. Por ejemplo, Sentinel-2 tiene un tiempo de revisita de 5 días en el área de estudio mientras que Landsat 8 tiene un tiempo de revisita de 16 días. Según \parencite{Gao2024}, la resolución temporal es crucial para monitorear cambios dinámicos en la superficie terrestre concluyendo que para aplicaciones agrícolas una resolción temporal no mayor a 10 días es adecuada. La muestra de datos con alta resolución temporal permite capturar cambios rápidos en la superficie terrestre, como el crecimiento de cultivos, la detección de plagas o enfermedades, y la respuesta a eventos climáticos. Esto es especialmente importante en la agricultura de precisión donde las condiciones pueden cambiar rápidamente y requieren una respuesta oportuna. Algunos conceptos importantes sobre la resolución temporal incluyen:
+
+\begin{itemize}
+  \item \textbf{Tiempo de revisita del satélite:} Es el intervalo de tiempo entre dos pasadas consecutivas del satélite sobre la misma área. Un tiempo de revisita más corto permite obtener datos más frecuentes.
+  \item \textbf{Frecuencia de observaciones utilizables:} No todas las observaciones son útiles debido a factores como la cobertura de nubes. La frecuencia de observaciones utilizables suele ser menor que el tiempo de revisita debido a estas limitaciones.
+\end{itemize}
+
+\subsubsection{Resolución espectral}
+
+Refiere a la capacidad de un sensor para discriminar entre diferentes longitudes de onda del espectro electromagnético dispuestas en distintas bandas espectrales. Una mayor resolución espectral permite capturar información bioquímica más detallada sobre la vegetación y otros materiales en la superficie terrestre. La resolución espectral dentro de una imagen satelital puede presentarse como ``stack'' de imágenes (bandas) que representan diferentes rangos del espectro electromagnético, como el visible, el infrarrojo cercano (NIR) y el infrarrojo de onda corta (SWIR). Cada banda captura información específica sobre cómo los objetos en la superficie terrestre interactúan con la luz en esas longitudes de onda particulares. Al combinar diferentes bandas espectrales, es posible obtener una visión más completa o un enfoque específico al momento de analizar la información. Por ejemplo, una imagen en color verdadero es la combinación de las bandas roja, verde y azul (RGB), mientras que una imagen en falso color puede combinar bandas NIR, roja y verde para resaltar la vegetación.
+
+Según \parencite{Sani2022} la resolución espectral en imágenes satelitales está fuertemente relacionada con la resolución espacio-temporal, concluye que productos de satélites que ofrecen valores altos de esta tienen a tener una resolución espectral limitada y viceversa. A continuación se hace un comparativo entre los productos de imagen satelital con diferentes resoluciones espectrales:
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{m{2cm} m{4cm} m{4cm}}
+    \multicolumn{1}{>{\centering}m{2cm}}{\textbf{Satélite}} &
+    \multicolumn{1}{>{\centering}m{4cm}}{\textbf{Resolución espacio-temporal}} &
+    \multicolumn{1}{>{\centering}m{4cm}}{\textbf{Resolución espectral (bandas)}} \\
+    \hline
+    \centering\small Sentinel-2 &
+    \small Alta resolución espacial (10-20 m) y temporal (5 días) &
+    \small 13 bandas espectrales, incluyendo visible, NIR y SWIR. \\
+    \hline
+    \centering\small Landsat 8 &
+    \small Resolución espacial moderada (30 m) y temporal (16 días) &
+    \small 11 bandas espectrales, incluyendo visible, NIR y SWIR. \\
+    \hline
+    \centering\small PlanetScope &
+    \small Alta resolución espacial (3-5 m) y muy alta resolución temporal (diaria) &
+    \small 4 bandas espectrales (RGB y NIR). \\
+    \hline
+  \end{tabular}
+  \caption{\centering Comparativo entre productos de imagen satelital con diferentes resoluciones espectrales y su relación con las resoluciones espacial y temporal. Fuente: elaboración propia basada en datos de agencias espaciales y proveedores comerciales.}
+  \label{tab:comparativo_resolucion_espectral}
+\end{table}
+
+\subsubsection{Resolución radiométrica}
+
+Podemos encontrar en \parencite{usgs} que la resolución radiométrica refiere a la capacidad de un sensor para discriminar cambios muy finos entre niveles de intensidad de radiación. Es decir, entendiendo como las bandas espectrales capturan la energía reflejada en diferentes longitudes de onda, la resolución radiométrica determina cuántos niveles distintos de intensidad pueden ser registrados dentro de cada banda. Esta capacidad está directamente relacionada con el número de bits utilizados en el conversor analógico-digital (ADC) del sensor. Se suele decir que mientras mayor sea la resolución radiométrica de un sensor mayor es los matices de gris que puede representarse en una imagen, lo que permite detectar diferencias más sutiles en la reflectancia o emisión térmica de los objetos en la superficie terrestre. Al momento de representar esto en una imagen satelital se considera el color negro para un nivel nulo de radiación y el color blanco para el nivel máximo, creando así, con todos los niveles intermedios, una escala de grises que representa los diferentes niveles de intensidad.
+
+La resolución radiométrica se mide en bits, y un mayor número de bits permite una representación más precisa de los niveles de intensidad. Por ejemplo, un sensor con una resolución de 8 bits puede representar 256 niveles de gris, mientras que uno de 12 bits puede representar 4096 niveles. Esto es crucial para aplicaciones que requieren un alto grado de detalle, como la detección de cambios sutiles en la vegetación o calidad del aire. A continuación, se presentan algunos datos sobre la resolución radiométrica de diferentes satélites y la representación matricial de dos arreglos con diferentes resoluciones radiométricas.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{m{4cm} m{4cm}}
+    \multicolumn{1}{>{\centering}m{4cm}}{\textbf{Satélite}} &
+    \multicolumn{1}{>{\centering}m{4cm}}{\textbf{Resolución radiométrica (bits)}} \\
+    \hline
+    \centering\small Landsat 5 TM &
+    \small 8 bits (256 niveles de gris) \\
+    \hline
+    \centering\small Sentinel-2 &
+    \small 12 bits (4096 niveles de gris) \\
+    \hline
+    \centering\small NOAA AVHRR &
+    \small 10 bits (1024 niveles de gris) \\
+    \hline
+  \end{tabular}
+  \caption{\centering Comparativo entre productos de imagen satelital con diferentes resoluciones radiométricas. Fuente: elaboración propia basada en datos de agencias espaciales y proveedores comerciales.}
+  \label{tab:comparativo_resolucion_radiometrica}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[x=\textwidth-1cm,y=10cm]
+    \begin{scope}
+      
+      \node at (0,0.5) {
+        $\left\{
+        \begin{array}{ccccc}
+          0 & 64 & 128 & 192 & 255\\
+          32 & 96 & 160 & 224 & 255\\
+          16 & 80 & 144 & 208 & 255\\
+          48 & 112 & 176 & 240 & 255\\
+          0 & 32 & 64 & 96 & 128\\
+        \end{array}
+        \right\}$
+      };
+      \node at (0,0.25) {\textbf{Matriz de reflectancia (8 bits)}};
+
+      \node at (0.34,0.5) {\includegraphics[width=0.23\textwidth]{assets/escala.png}};
+
+      \node at (0.34,0.18) {\textbf{Imagen representativa}};
+
+      \node at (0.68,0.5) {
+        $\left\{
+        \begin{array}{ccccc}
+          0 & 1024 & 2048 & 3072 & 4095\\
+          512 & 1536 & 2560 & 3584 & 4095\\
+          256 & 1280 & 2304 & 3328 & 4095\\
+          768 & 1792 & 2816 & 3840 & 4095\\
+          0 & 512 & 1024 & 1536 & 2048\\
+        \end{array}
+        \right\}$
+      };
+      \node at (0.68,0.25) {\textbf{Matriz de reflectancia (12 bits)}};
+    \end{scope}
+\end{tikzpicture}
+\captionsetup{hypcap=false}
+\captionof{figure}{\centering Comparativo entre dos matrices de reflectancia con diferentes resoluciones radiométricas (8 bits y 12 bits) y su representación visual en escala de grises (caso general). Nótese la diferencia en la cantidad de niveles de gris representados en el arreglo matricial. Fuente: elaboración propia.}
+\label{fig:comparativo_resolucion_radiometrica}
+\end{figure}
+
+\subsection{Satelites de teledetección}
+
+Los sensores de teledetección montados en satélites son herramientas que revolucionaron la forma en que monitoreamos y gestionamos los recursos naturales. Estos están equipados en satélites avanzados que juntos pueden capturar datos en múltiples longitudes de onda del espectro electromagnético proporcionando información valiosa sobre la salud de los cultivos, la calidad del suelo y otros parámetros ambientales. En \parencite{Wulder2022} se menciona una revisión de 50 años de teledetección satelital, donde se concluye que los satélites Landsat han sido los más utilizados en estudios científicos, seguidos por los satélites Sentinel-2 y MODIS. A continuación se describen algunos de los satélites más relevantes en el monitoreo agrícola:
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+
+\begin{table}[ht]
+  \centering
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{C{2cm} C{1.5cm} C{1cm} C{2.5cm} C{1.3cm} C{1cm} C{1.7cm} C{1.3cm}}
+    \textbf{Satélite} & \textbf{Org.} & \textbf{Inicio} & \textbf{Sensor} & \textbf{Bandas} & \textbf{R. R. (bits)} & \textbf{R. E. (metros)} & \textbf{R. T. (dias)} \\
+    \hline
+    \small Landsat 1 & \small NASA USGS & \small 1972 & \small MSS & \small 4 & \small 6 & \small 80 & \small 18 \\
+    \hline
+    \small Landsat 5 & \small NASA USGS & \small 1984 & \small TM & \small 7 & \small 8 & \small 30 - 120 & \small 16 \\
+    \hline
+    \small Landsat 8 & \small NASA USGS & \small 2013 & \small OLI + TIRS & \small 11 & \small 12 & \small 15 - 30 & \small 16 \\
+    \hline
+    \small Sentinel 2A & \small ESA & \small 2015 & \small MSI & \small 13 & \small 12 & \small 10 – 60 & \small 5 \\
+    \hline
+    \small Sentinel 1A & \small ESA & \small 2014 & \small SAR & \small 1 & \small 16 & \small 5 - 40 & \small 6 - 12 \\
+    \hline
+    \small MODIS & \small NASA & \small 1999 & \small Multiespectral & \small 36 & \small 12 & \small 250 – 1000 & \small 1–2 \\
+    \hline
+    \small NOAA AVHRR & \small NOAA & \small 1978 & \small Radiometro AVHRR & \small 6 & \small 10 & \small 1100 & \small 0.5 \\
+    \hline
+    \small PlanetScope & \small Planet & \small 2014 & \small RGB+NIR & \small 4 & \small 12 & \small 3 & \small 1 \\
+    \hline
+    \small WorldView 3 & \small Maxar & \small 2014 & \small MS + Pan + SWIR & \small 29 & \small 11 & \small 0.31 (pan), 1.24 (MS), 3.7 (SWIR) & \small <1 \\
+    \hline
+    \small GeoEye 1 & \small Maxar & \small 2008 & \small MS + Pan & \small 5 & \small 11 & \small 0.41 (pan), 1.65 (MS) & \small 2 – 3 \\
+    \hline
+  \end{tabular}
+  \caption{\centering Comparativo de satélites relevantes para observación de la Tierra y agricultura de precisión, con sus resoluciones radiométricas (R.R.), espaciales (R.E.) y temporales (R.T.). Fuente: elaboración propia basada en datos de agencias espaciales y proveedores comerciales.}
+  \label{tab:comparativo_satelites}
+\end{table}
+
+Es importante considerar un apartado para los satélites más utilizados en la agricultura de precisión, los cuales son los satélites Sentinel-2 y Landsat 8, estos son de libre acceso, es decir, sus datos pueden ser descargados gratuitamente desde las plataformas oficiales de las agencias espaciales que los operan (ESA y USGS respectivamente).
+
+\subsubsection{Sentinel-2}
+
+Sentinel-2 es una misión de la Agencia Espacial Europea (ESA) que forma parte del programa Copernicus. Está compuesta por dos satélites idénticos, Sentinel-2A y Sentinel-2B, lanzados en 2015 y 2017 respectivamente. Estos satélites están equipados con el sensor Multispectral Instrument (MSI) que captura datos en 13 bandas espectrales que van desde el visible hasta el infrarrojo de onda corta (SWIR). La resolución espacial varía entre 10, 20 y 60 metros dependiendo de la banda espectral, mientras que la resolución temporal es de aproximadamente 5 días en el ecuador gracias a la combinación de ambos satélites. Sentinel-2 es ampliamente utilizado en aplicaciones agrícolas debido a su capacidad para monitorear la salud de los cultivos, evaluar la cobertura vegetal y detectar cambios en el uso del suelo.
+
+\subsubsection{Landsat 8}
+
+Landsat 8 es parte del programa Landsat, una colaboración entre la NASA y el Servicio Geológico de los Estados Unidos (USGS). Fue lanzado en 2013 y está equipado con dos sensores principales: el Operational Land Imager (OLI) y el Thermal Infrared Sensor (TIRS). Landsat 8 captura datos en 11 bandas espectrales que incluyen el visible, el infrarrojo cercano (NIR), el infrarrojo de onda corta (SWIR) y el infrarrojo térmico. La resolución espacial es de 30 metros para la mayoría de las bandas, con una resolución de 15 metros para la banda pancromática y 100 metros para las bandas térmicas. La resolución temporal es de 16 días. Landsat 8 es utilizado en una variedad de aplicaciones agrícolas, incluyendo la monitorización del crecimiento de los cultivos, la gestión del agua y la evaluación del impacto ambiental.
+
+\subsection{Índices espectrales aplicados a agricultura}
+
+Los índices espectrales son herramientas matemáticas que combinan diferentes bandas espectrales para resaltar características específicas de la vegetación y otros materiales en la superficie terrestre. \parencite{Radoaj2023} menciona cómo los índices espectrales proporcionan información cuantitativa sobre la salud y el crecimiento de los cultivos, por lo tanto, desempeñan un papel crucial al ofrecer una evaluación sencilla y fiable del estado y la salud de estos. Entre los principales aspectos de la fisiología vegetal que los índices espectrales pueden ayudar a evaluar se incluyen:
+
+\begin{itemize}
+  \item \textbf{Contenido de clorofila:} La clorofila es el pigmento responsable de la fotosíntesis y su concentración puede indicar la salud y el vigor de las plantas.
+  \item \textbf{Área foliar:} El área foliar es un indicador del tamaño y la densidad de la vegetación, lo que puede influir en la capacidad de las plantas para captar luz y realizar la fotosíntesis.
+  \item \textbf{Estrés hídrico:} Los índices espectrales pueden detectar cambios en la reflectancia causados por la falta de agua, lo que es crucial para la gestión del riego.
+  \item \textbf{Biomasa:} La biomasa es una medida de la cantidad total de materia vegetal y puede ser estimada utilizando índices espectrales.
+  \item \textbf{Actividad fotosintética:} Algunos índices pueden proporcionar información sobre la eficiencia fotosintética de las plantas, lo que es importante para evaluar su productividad.
+\end{itemize}
+
+Conocer estos aspectos es fundamental para la toma de decisiones responsable, permitiendo a los agricultores optimizar el uso de recursos como agua, fertilizantes y pesticidas, mejorar la productividad de los cultivos y reducir el impacto ambiental. Se describen a continuación algunos de los beneficios clave de utilizar índices espectrales en la agricultura de precisión:
+
+\begin{itemize}
+  \item \textbf{Optimizar la tasa de prescripción:} Permite la aplicación viable de insumos agrícolas en función del área que los necesecite, evitando el desperdicio y reduciendo costos. 
+  \item \textbf{Identificar zonas con problemas:} Ayudan a detectar áreas dentro de un campo que tienen un rendimiento inferior o están experimentando estrés, ya sea por deficiencia de agua o de nutrientes.
+  \item \textbf{Predicción del rendimiento de los cultivos:} Se utilizan con frecuencia en la predicción del rendimiento y la biomasa de diversos cultivos.
+  \item \textbf{Monitoreo del crecimiento de los cultivos:} Permiten un seguimiento continuo del desarrollo de los cultivos a lo largo del tiempo, facilitando la identificación de patrones y tendencias.
+  \item \textbf{Detección y manejo de plagas y enfermedades:} Ayudan a identificar áreas afectadas por plagas o enfermedades, permitiendo una intervención temprana y localizada.
+  \item \textbf{Evaluación del impacto ambiental:} Facilitan la evaluación de el impacto de las prácticas agrícolas en el medio ambiente, como la erosión del suelo y la contaminación del agua.
+\end{itemize}
+
+\subsubsection{Fundamento matemático}
+
+Los índices espectrales se calculan utilizando fórmulas matemáticas que combinan las reflectancias medidas en diferentes bandas espectrales. Estas fórmulas están diseñadas para resaltar ciertas características de la vegetación o del suelo, y pueden variar en complejidad desde simples relaciones entre dos bandas hasta combinaciones más elaboradas que involucran múltiples bandas y coeficientes de ponderación que dependen de caracterísiticas específicas del sensor, del objeto de estudio, de una región geográfica específica o de una banda del espectro electromagnético en específico, sin embargo, todas estas se basan en operaciones matemáticas que manipulan los valores entregados por los sensores de teledetección, es decir, manipulan elementos de una matriz de datos.
+
+Para entender cómo se calculan de forma general, analizaremos uno de los más utilizados,  el Índice Diferencial de Vegetación Normalizada (NDVI, por sus siglas en inglés), que, matricialmente se define como:
+
+\begin{equation}
+  NDVI = \frac{(NIR - RED)}{(NIR + RED)}
+\end{equation}
+
+Donde:
+\begin{itemize}
+  \item $NIR$ es la reflectancia en la banda del infrarrojo cercano.
+  \item $RED$ es la reflectancia en la banda roja del espectro visible.
+\end{itemize}
+
+Matemáticamente podemos interpretar esta relación como la diferencial entre la reflectancia en el infrarrojo cercano y la reflectancia en la banda roja, normalizada por la suma de reflectancias. A continuación se muestra un ejemplo del cálculo de este índice utilizando matrices de reflectancia:
+
+Consideremos la captura de datos de la siguiente área de cultivo (A), se tiene que esta área de tiene una extensión de 3x3 kilómetros cuadrados y se han capturado la radiancia reflejada por el satélite (B) que es un satélite multiespectral (representación del satélite Landsat 8), por lo que se ha obtenido un estack de imágenes (C) que representan las diferentes bandas espectrales, entre ellas, la banda roja (RED) y la banda del infrarrojo cercano (NIR).
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\textwidth]{assets/captura-sat.png}
+  \caption{\centering Ejemplo de área de cultivo (A), satélite multiespectral (B) y la captura de imagen satelital, stack de imágenes multiespectrales (bandas) (C). Fuente: elaboración propia.}
+  \label{fig:area_cultivo_stack}
+\end{figure}
+
+Posteriormente se extraen las bandas espectrales de interés, en este caso, la banda roja (RED) y la banda del infrarrojo cercano (NIR), las cuales son representadas como matrices de reflectancia, es importante reconocer cómo se están representando los niveles de reflectancia para el color rojo y el infrarrojo cercano, recordemos, según la fisiología vegetal, que la vegetación sana absorbe fuertemente la luz roja para la fotosíntesis y refleja fuertemente la luz del infrarrojo cercano, esto se traduce en valores mas bajos para la banda roja y valores más altos para la banda del infrarrojo cercano si es que la vegetación es en efecto, sana. sin embargo si la vegetación está estresada o enferma, como son los casos de los cuadrantes del extremo inferior derecho, los valores de reflectancia en la banda roja serán más altos y los valores en la banda del infrarrojo cercano serán más bajos. Esto es particularmente útil a la hora de calcular la diferencia entre ambas bandas, ya que si la vegetación está sana, la diferencia será mayor y si está estresada o enferma, la diferencia será menor o incluso negativa.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[x=\textwidth-1cm,y=10cm]
+    \begin{scope}
+
+      \node at (0.0,0.5) {\includegraphics[width=0.23\textwidth]{assets/sample-terreno.png}};
+
+      \node at (0,0.25) {\textbf{Muestra de terreno}};
+      
+      \node at (0.36,0.5) {
+        $\left\{
+          \begin{array}{ccc}
+            26 & \hspace{0.8cm} 51 & \hspace{0.8cm} 89 \\[1.5em]
+            64 & \hspace{0.8cm} 102 & \hspace{0.8cm} 140 \\[1.5em]
+            115  & \hspace{0.8cm} 153 & \hspace{0.8cm} 204 \\
+          \end{array}
+        \right\}$
+      };
+
+      \node at (0.365,0.25) {\textbf{Banda RED (8 bits)}};
+
+      \node at (0.75,0.5) {
+        $\left\{
+          \begin{array}{ccc}
+            204 & \hspace{0.8cm} 179 & \hspace{0.8cm} 140 \\[1.5em]
+            166 & \hspace{0.8cm} 128 & \hspace{0.8cm} 89 \\[1.5em]
+            140  & \hspace{0.8cm} 102 & \hspace{0.8cm} 51 \\
+          \end{array}
+        \right\}$
+      };
+      \node at (0.75,0.25) {\textbf{Banda NIR (8 bits)}};
+    \end{scope}
+\end{tikzpicture}
+\captionsetup{hypcap=false}
+\captionof{figure}{\centering Representación de la banda roja (RED) y la banda del infrarrojo cercano (NIR) como matrices de reflectancia extraídas del stack de imágenes multiespectrales. Nótese cómo los valores de reflectancia varían en función de la salud de la vegetación. Fuente: elaboración propia.}
+\label{fig:comparativo_resolucion_radiometricaa}
+\end{figure}
+
+Calculando la expresión para el NDVI, tenemos:
+
+\begin{multicols}{2}
+  \[
+    NDVI = \frac{NIR - RED}{NIR + RED}
+  \]
+  Matricialmente no se define la división, por lo que se tiene:
+
+  \[
+    NDVI = (NIR - RED) \cdot (NIR + RED)^{-1}
+  \]
+
+  Calculando la diferencia:
+  
+  \[
+    NIR - RED =
+    \left\{
+      \begin{array}{ccc}
+        178 & 128 & 51 \\
+        102 & 26 & -51 \\
+        25 & -51 & -153 \\
+      \end{array}
+    \right\}
+  \]
+
+  Calculando la suma:
+  \[
+    NIR + RED =
+    \left\{
+      \begin{array}{ccc}
+        230 & 230 & 229 \\
+        230 & 230 & 229 \\
+        255 & 255 & 255 \\
+      \end{array}
+    \right\}
+  \]
+
+  Luego, calculando la inversa de la suma:
+  \[
+    (NIR + RED)^{-1} =
+    \left\{
+      \begin{array}{ccc}
+        0.0043 & 0.0043 & 0.0044 \\
+        0.0043 & 0.0043 & 0.0044 \\
+        0.0039 & 0.0039 & 0.0039 \\
+      \end{array}
+    \right\}
+  \]
+  Finalmente, calculando el NDVI:
+  \[
+    NDVI =
+    \left\{
+      \begin{array}{ccc}
+        0.76 & 0.56 & 0.22 \\
+        0.44 & 0.11 & -0.22 \\
+        0.10 & -0.22 & -0.60 \\
+      \end{array}
+    \right\}
+  \]
+\end{multicols}
+
+De aquí se puede concluir que el índice NDVI varía entre -1 y 1 dada la razón entre la diferencia y la suma de las reflectancias, entendiendo que la diferencia siempre será menor o igual a la suma, mientras esta última sirve para la normalización, es decir, para mantener el índice dentro de un rango específico.
+
+Finalmente es posible representar visualmente el índice NDVI utilizando una escala de colores que va desde el rojo (valores bajos o negativos) hasta el verde (valores altos), pasando por tonos intermedios como el amarillo y el naranja. Esta representación facilita la interpretación de los datos, permitiendo identificar rápidamente áreas con vegetación sana (valores altos de NDVI) y áreas con vegetación estresada o sin vegetación (valores bajos o negativos de NDVI).
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[x=1cm, y=1cm]
+    % Imagen del terreno (izquierda)
+    \node at (1,0) {\includegraphics[width=0.28\textwidth]{assets/sample-terreno.png}};
+    \node at (1,-3.5) {\textbf{Muestra de terreno}};
+      
+    % Matriz NDVI (centro)
+    \node at (6,0) {
+        $\begin{bmatrix}
+            0.76 & 0.56 & 0.22 \\
+            0.44 & 0.11 & -0.22 \\
+            0.10 & -0.22 & -0.60 \\
+        \end{bmatrix}$
+    };
+    \node at (6,-3.5) {\textbf{Matriz NDVI}};
+
+    
+    % Representación visual con cuadrados (derecha)
+    \begin{scope}[shift={(9,2.2)}]
+    \def\squareSize{1.6}
+        
+        % Primera fila
+        \fill[green!80] (0,0) rectangle (\squareSize,-\squareSize) node[midway, black] {0.76};
+        \fill[green!60] (\squareSize,0) rectangle (2*\squareSize,-\squareSize) node[midway, black] {0.56};
+        \fill[green!20] (2*\squareSize,0) rectangle (3*\squareSize,-\squareSize) node[midway, black] {0.22};
+        
+        % Segunda fila
+        \fill[yellow!80] (0,-\squareSize) rectangle (\squareSize,-2*\squareSize) node[midway, black] {0.44};
+        \fill[yellow!40] (\squareSize,-\squareSize) rectangle (2*\squareSize,-2*\squareSize) node[midway, black] {0.11};
+        \fill[red!40] (2*\squareSize,-\squareSize) rectangle (3*\squareSize,-2*\squareSize) node[midway, black] {-0.22};
+        
+        % Tercera fila
+        \fill[yellow!20] (0,-2*\squareSize) rectangle (\squareSize,-3*\squareSize) node[midway, black] {0.10};
+        \fill[red!40] (\squareSize,-2*\squareSize) rectangle (2*\squareSize,-3*\squareSize) node[midway, black] {-0.22};
+        \fill[red!80] (2*\squareSize,-2*\squareSize) rectangle (3*\squareSize,-3*\squareSize) node[midway, black] {-0.60};
+    \end{scope}
+    \node at (11.5,-3.5) {\textbf{Representación Visual}};
+\end{tikzpicture}
+\captionsetup{hypcap=false}
+\captionof{figure}{\centering Comparativo entre la muestra de terreno, la matriz NDVI calculada y su representación visual utilizando una escala de colores. Nótese cómo las áreas con vegetación sana se representan en tonos verdes, mientras que las áreas con vegetación estresada o sin vegetación se representan en tonos rojos. Fuente: elaboración propia.}
+\label{fig:comparativo_resolucion_radiometricab}
+\end{figure}
+
+\subsubsection{Índices espectrales más utilizados en agricultura}
+
+A continuación se describen algunos de los índices espectrales más comunes utilizados en la agricultura de precisión, junto con sus fórmulas matemáticas y aplicaciones específicas: Fuente: \parencite{Xue2017,Radoaj2023}
+
+\begin{multicols}{2}
+  \begin{itemize}
+  \item \textbf{Índice de Vegetación de Diferencia Simple (DVI):}
+    {\small \[
+      DVI = NIR - RED
+    \]}
+    Medición directa de la cantidad de vegetación, aunque poco robusto frente a condiciones variables de suelo y atmósfera. Se usa como base para índices normalizados.
+
+  \item \textbf{Índice de Vegetación Mejorado (EVI):}
+    {\small
+    \[
+      EVI = G\frac{(NIR - RED)}{(NIR + C_1 \cdot RED - C_2 \cdot BLUE + L)}
+    \]
+    }
+    Donde:
+
+    {\small
+    $G$: Factor de ganancia
+
+    $C_1$ y $C_2$: Coeficientes de corrección atmosférica
+    
+    $L$: Factor de ajuste para el suelo.}
+
+    Mejora la sensibilidad en áreas con alta biomasa y reduce la influencia del suelo y la atmósfera.
+
+  \item \textbf{Índice de Agua Normalizado (NDWI):}
+    {\small \[
+      NDWI = \frac{(NIR - SWIR)}{(NIR + SWIR)}
+    \]}
+    Detección del contenido de agua en la vegetación y monitoreo del estrés hídrico.
+
+  \item \textbf{Índice de Clorofila Verde (GCI):}
+    {\small \[
+      GCI = \frac{NIR}{GREEN} - 1
+    \]}
+    Estimación del contenido de clorofila en las hojas, útil para evaluar la salud nutricional y el estado nitrogenado de las plantas.
+
+  \item \textbf{Índice de Vegetación Ajustado al Suelo (SAVI):}
+    {\small \[
+      SAVI = \frac{(NIR - RED) \cdot (1 + L)}{(NIR + RED + L)}
+    \]}
+    Donde:
+    {\small
+    $L$: Factor de influencia del suelo.}
+    
+    Mejora la precisión en áreas con baja cobertura vegetal y alta influencia del suelo.  
+
+  \item \textbf{Índice de Diferencia Normalizada del Red Edge (NDRE):}
+    {\small \[
+      NDRE = \frac{(NIR - RED_{edge})}{(NIR + RED_{edge})}
+    \]}
+    Sensible al contenido de clorofila y vigor en etapas avanzadas del cultivo, reduce la saturación del NDVI en coberturas densas.  
+\end{itemize}
+\end{multicols}

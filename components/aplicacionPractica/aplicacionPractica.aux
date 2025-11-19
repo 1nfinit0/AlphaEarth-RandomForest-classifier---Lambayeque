@@ -1,0 +1,236 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {3}\centering  CAPÍTULO II APLICACIÓN PRÁCTICA: CLASIFICACIÓN DE COBERTURA AGRÍCOLA}{17}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Flujo de trabajo}{17}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces \centering  Diagrama de flujo que describe el proceso de generación y uso del modelo de clasificación supervisada de cobertura agrícola.}}{17}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:flujo-trabajo}{{10}{17}{\centering Diagrama de flujo que describe el proceso de generación y uso del modelo de clasificación supervisada de cobertura agrícola}{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Materiales}{18}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Metodología}{19}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces \centering  Mapa de ubicación del departamento de Lambayeque, Perú, área de estudio para la clasificación de cobertura agrícola.}}{19}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:mapa-ubicacion}{{11}{19}{\centering Mapa de ubicación del departamento de Lambayeque, Perú, área de estudio para la clasificación de cobertura agrícola}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Procedimiento}{20}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Etiquetas de entrenamiento}{20}{subsubsection.3.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces \centering  Código en JavaScript para la generación de la imagen de referencia en GEE. De la línea 1 a 4, se carga el dataset de Sentinel-2 y se filtra por fecha y área de interés, y de la línea 6 a 11, se definen los parámetros de visualización para la imagen.}}{20}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:codigo_modelo9}{{12}{20}{\centering Código en JavaScript para la generación de la imagen de referencia en GEE. De la línea 1 a 4, se carga el dataset de Sentinel-2 y se filtra por fecha y área de interés, y de la línea 6 a 11, se definen los parámetros de visualización para la imagen}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces \centering  Muestra del etiquetado de polígonos en QGIS para la generación del dataset de entrenamiento en el departamento de Lambayeque, Perú. Nótese que en (a) se muestra la imagen de referencia utilizada, en (b) el proceso de etiquetado de polígonos y en (c) una muestra de los polígonos realizados.}}{21}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:etiquetas-lambayeque}{{13}{21}{\centering Muestra del etiquetado de polígonos en QGIS para la generación del dataset de entrenamiento en el departamento de Lambayeque, Perú. Nótese que en (a) se muestra la imagen de referencia utilizada, en (b) el proceso de etiquetado de polígonos y en (c) una muestra de los polígonos realizados}{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces \centering  Subida del archivo shapefile con las etiquetas de entrenamiento a Google Earth Engine.}}{22}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:proceso_subida}{{14}{22}{\centering Subida del archivo shapefile con las etiquetas de entrenamiento a Google Earth Engine}{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}Generación del dataset de entrenamiento}{22}{subsubsection.3.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces \centering  Código en JavaScript para la importación de los recursos necesarios en GEE. La ubicación de los recursos varían dependiendo del usuario y proyecto GEE.}}{22}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:codigo_modelo}{{15}{22}{\centering Código en JavaScript para la importación de los recursos necesarios en GEE. La ubicación de los recursos varían dependiendo del usuario y proyecto GEE}{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces \centering  Código en JavaScript para la generación del dataset de entrenamiento en GEE. De la línea 1 a 3, se carga el dataset de AlphaEarth Foundations, de la línea 5 a 7, se genera una imagen mosaico y se recorta al área de interés, y de la línea 9 a 13, se genera el dataset de entrenamiento utilizando las etiquetas de entrenamiento. Obs: se utiliza una escala de 20 metros para la extracción de las características por su alta carga computacional.}}{23}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:codigo_modelo_2}{{16}{23}{\centering Código en JavaScript para la generación del dataset de entrenamiento en GEE. De la línea 1 a 3, se carga el dataset de AlphaEarth Foundations, de la línea 5 a 7, se genera una imagen mosaico y se recorta al área de interés, y de la línea 9 a 13, se genera el dataset de entrenamiento utilizando las etiquetas de entrenamiento. Obs: se utiliza una escala de 20 metros para la extracción de las características por su alta carga computacional}{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}Generación del modelo de clasificación supervisada}{23}{subsubsection.3.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces \centering  Código en JavaScript para la generación del modelo de clasificación supervisada en GEE. En este caso, se utiliza 200 árboles de decisión para la creación del modelo. Nótese, además, que se especifica la propiedad de clase y las bandas de entrada.}}{23}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:codigo_modelo_3}{{17}{23}{\centering Código en JavaScript para la generación del modelo de clasificación supervisada en GEE. En este caso, se utiliza 200 árboles de decisión para la creación del modelo. Nótese, además, que se especifica la propiedad de clase y las bandas de entrada}{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.4}Aplicación del modelo de clasificación supervisada}{23}{subsubsection.3.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces \centering  Código en JavaScript para la aplicación del modelo de clasificación supervisada en GEE. La generación de la imagen clasificada se realiza mediante el método \texttt  {classify()} y la visualización de la misma en el lienzo mediante \texttt  {Map.addLayer()} con una paleta de colores tal que las áreas sin cobertura agrícola se muestran en rojo y las áreas con cobertura agrícola en verde.}}{23}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:codigo_modelo_4}{{18}{23}{\centering Código en JavaScript para la aplicación del modelo de clasificación supervisada en GEE. La generación de la imagen clasificada se realiza mediante el método \texttt {classify()} y la visualización de la misma en el lienzo mediante \texttt {Map.addLayer()} con una paleta de colores tal que las áreas sin cobertura agrícola se muestran en rojo y las áreas con cobertura agrícola en verde}{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Resultados}{24}{subsection.3.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces \centering  Mapa de clasificación de cobertura agrícola obtenido para el departamento de Lambayeque, Perú, utilizando el modelo de clasificación supervisada generado con AlphaEarth Foundations y Google Earth Engine. En verde se muestran las áreas con cobertura agrícola y en rojo las áreas sin cobertura agrícola.}}{24}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:mapa-clasificacion}{{19}{24}{\centering Mapa de clasificación de cobertura agrícola obtenido para el departamento de Lambayeque, Perú, utilizando el modelo de clasificación supervisada generado con AlphaEarth Foundations y Google Earth Engine. En verde se muestran las áreas con cobertura agrícola y en rojo las áreas sin cobertura agrícola}{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Validación del modelo de clasificación supervisada}{25}{subsection.3.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces \centering  Código en JavaScript para la segmentación del dataset de entrenamiento y generación del modelo de clasificación supervisada en GEE. Se utiliza el método \texttt  {randomColumn()} para asignar un valor aleatorio a cada muestra, luego se filtran las muestras en dos subconjuntos: uno para entrenamiento (70\%) y otro para validación (30\%).}}{25}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:codigo_modelo_6}{{20}{25}{\centering Código en JavaScript para la segmentación del dataset de entrenamiento y generación del modelo de clasificación supervisada en GEE. Se utiliza el método \texttt {randomColumn()} para asignar un valor aleatorio a cada muestra, luego se filtran las muestras en dos subconjuntos: uno para entrenamiento (70\%) y otro para validación (30\%)}{figure.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces \centering  Salida de la consola de Google Earth Engine tras la ejecución del código para la segmentación del dataset de entrenamiento y generación del modelo de clasificación supervisada, los valores corresponden a la cantidad de píxeles muestreados (51,321), de los cuales 35,821 se utilizan para el entrenamiento del modelo y 15,500 para la validación del mismo.}}{25}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:consola-gee}{{21}{25}{\centering Salida de la consola de Google Earth Engine tras la ejecución del código para la segmentación del dataset de entrenamiento y generación del modelo de clasificación supervisada, los valores corresponden a la cantidad de píxeles muestreados (51,321), de los cuales 35,821 se utilizan para el entrenamiento del modelo y 15,500 para la validación del mismo}{figure.caption.26}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.6.1}Matriz de confusión}{26}{subsubsection.3.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces \centering  Código en JavaScript para la obtención de la matriz de confusión en GEE. Se utiliza el método \texttt  {errorMatrix()} para comparar las etiquetas reales con las predicciones del modelo.}}{26}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:codigo_modelo_5}{{22}{26}{\centering Código en JavaScript para la obtención de la matriz de confusión en GEE. Se utiliza el método \texttt {errorMatrix()} para comparar las etiquetas reales con las predicciones del modelo}{figure.caption.27}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \centering  Matriz de confusión obtenida para la validación del modelo de clasificación supervisada de cobertura agrícola.}}{26}{table.caption.28}\protected@file@percent }
+\newlabel{tab:matriz-confusion}{{5}{26}{\centering Matriz de confusión obtenida para la validación del modelo de clasificación supervisada de cobertura agrícola}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.6.2}Precisión General del modelo (overall accuracy)}{26}{subsubsection.3.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces \centering  Código en JavaScript para calcular la precisión general (overall accuracy) del modelo de clasificación supervisada en GEE a partir de la matriz de confusión.}}{27}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:codigo_modelo_7}{{23}{27}{\centering Código en JavaScript para calcular la precisión general (overall accuracy) del modelo de clasificación supervisada en GEE a partir de la matriz de confusión}{figure.caption.29}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces \centering  Salida de la consola de Google Earth Engine tras la ejecución del código para calcular la precisión general del modelo de clasificación supervisada.}}{27}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:consola-gee-precision}{{24}{27}{\centering Salida de la consola de Google Earth Engine tras la ejecución del código para calcular la precisión general del modelo de clasificación supervisada}{figure.caption.30}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.6.3}Métricas de área calculada}{27}{subsubsection.3.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces \centering  Estadísticas de área calculadas para el departamento de Lambayeque.}}{27}{table.caption.31}\protected@file@percent }
+\newlabel{tab:estadisticas-area}{{6}{27}{\centering Estadísticas de área calculadas para el departamento de Lambayeque}{table.caption.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces \centering  Gráfico de barras con la distribución porcentual de cobertura agrícola y no agrícola en Lambayeque.}}{27}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:barra-cobertura}{{25}{27}{\centering Gráfico de barras con la distribución porcentual de cobertura agrícola y no agrícola en Lambayeque}{figure.caption.32}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Análisis y discusión de resultados}{28}{subsection.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.7.1}Clasificación en áreas cubiertas por nubes}{28}{subsubsection.3.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces \centering  Comparación visual entre la imagen original (a) y la imagen clasificada (b) para el área de estudio.}}{28}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:comparacion-imagenes}{{26}{28}{\centering Comparación visual entre la imagen original (a) y la imagen clasificada (b) para el área de estudio}{figure.caption.33}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces \centering  Tercera comparación visual entre la imagen original (a) y la imagen clasificada (b) en una región diferente del área de estudio.}}{29}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:comparacion-imagenes-2}{{27}{29}{\centering Tercera comparación visual entre la imagen original (a) y la imagen clasificada (b) en una región diferente del área de estudio}{figure.caption.34}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.7.2}Clasificación de áreas con vegetación natural}{29}{subsubsection.3.7.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces \centering  Comparación visual entre un área con vegetación natural (a) y su correspondiente clasificación (b), donde el modelo identifica correctamente la vegetación natural como ``No Cultivo''.}}{29}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:comparacion-vegetacion}{{28}{29}{\centering Comparación visual entre un área con vegetación natural (a) y su correspondiente clasificación (b), donde el modelo identifica correctamente la vegetación natural como ``No Cultivo''}{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.7.3}Cuerpos de agua}{30}{subsubsection.3.7.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces \centering  Comparación visual entre un cuerpo de agua (a) y su correspondiente clasificación (b), donde el modelo identifica correctamente el cuerpo de agua como ``No Cultivo''.}}{30}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:comparacion-agua}{{29}{30}{\centering Comparación visual entre un cuerpo de agua (a) y su correspondiente clasificación (b), donde el modelo identifica correctamente el cuerpo de agua como ``No Cultivo''}{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.7.4}Comparación con otros productos satelitales}{30}{subsubsection.3.7.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces \centering  Comparación visual entre la clasificación propuesta (a) imagen Sentinel-2, el producto ESA WorldCover (b) y la clasificación generada por el modelo (c). Se puede observar que la clasificación propuesta muestra una mayor precisión en la identificación de áreas agrícolas en comparación con el producto ESA WorldCover.}}{31}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:comparacion-productos}{{30}{31}{\centering Comparación visual entre la clasificación propuesta (a) imagen Sentinel-2, el producto ESA WorldCover (b) y la clasificación generada por el modelo (c). Se puede observar que la clasificación propuesta muestra una mayor precisión en la identificación de áreas agrícolas en comparación con el producto ESA WorldCover}{figure.caption.37}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Conclusiones}{32}{subsection.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9}Recomendaciones}{33}{subsection.3.9}\protected@file@percent }
+\@setckpt{components/aplicacionPractica/aplicacionPractica}{
+\setcounter{page}{34}
+\setcounter{equation}{1}
+\setcounter{enumi}{0}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{section}{3}
+\setcounter{subsection}{9}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{30}
+\setcounter{table}{6}
+\setcounter{caption@flags}{2}
+\setcounter{continuedfloat}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{lofdepth}{1}
+\setcounter{lotdepth}{1}
+\setcounter{parentequation}{0}
+\setcounter{float@type}{8}
+\setcounter{FancyVerbLine}{2}
+\setcounter{linenumber}{1}
+\setcounter{LN@truepage}{36}
+\setcounter{FancyVerbWriteLine}{0}
+\setcounter{FancyVerbBufferLine}{4}
+\setcounter{FV@TrueTabGroupLevel}{0}
+\setcounter{FV@TrueTabCounter}{0}
+\setcounter{FV@HighlightLinesStart}{0}
+\setcounter{FV@HighlightLinesStop}{0}
+\setcounter{FancyVerbLineBreakLast}{2}
+\setcounter{FV@BreakBufferDepth}{0}
+\setcounter{minted@FancyVerbLineTemp}{0}
+\setcounter{listing}{0}
+\setcounter{section@level}{0}
+\setcounter{Item}{0}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{48}
+\setcounter{tabx@nest}{0}
+\setcounter{listtotal}{0}
+\setcounter{listcount}{0}
+\setcounter{liststart}{0}
+\setcounter{liststop}{0}
+\setcounter{citecount}{0}
+\setcounter{citetotal}{0}
+\setcounter{multicitecount}{0}
+\setcounter{multicitetotal}{0}
+\setcounter{instcount}{26}
+\setcounter{maxnames}{2}
+\setcounter{minnames}{1}
+\setcounter{maxitems}{999}
+\setcounter{minitems}{1}
+\setcounter{citecounter}{0}
+\setcounter{maxcitecounter}{0}
+\setcounter{savedcitecounter}{0}
+\setcounter{uniquelist}{0}
+\setcounter{uniquename}{0}
+\setcounter{refsection}{0}
+\setcounter{refsegment}{0}
+\setcounter{maxextratitle}{0}
+\setcounter{maxextratitleyear}{0}
+\setcounter{maxextraname}{0}
+\setcounter{maxextradate}{0}
+\setcounter{maxextraalpha}{0}
+\setcounter{abbrvpenalty}{50}
+\setcounter{highnamepenalty}{50}
+\setcounter{lownamepenalty}{25}
+\setcounter{maxparens}{3}
+\setcounter{parenlevel}{0}
+\setcounter{blx@maxsection}{0}
+\setcounter{mincomprange}{10}
+\setcounter{maxcomprange}{100000}
+\setcounter{mincompwidth}{1}
+\setcounter{afterword}{0}
+\setcounter{savedafterword}{0}
+\setcounter{annotator}{0}
+\setcounter{savedannotator}{0}
+\setcounter{author}{0}
+\setcounter{savedauthor}{0}
+\setcounter{bookauthor}{0}
+\setcounter{savedbookauthor}{0}
+\setcounter{commentator}{0}
+\setcounter{savedcommentator}{0}
+\setcounter{editor}{0}
+\setcounter{savededitor}{0}
+\setcounter{editora}{0}
+\setcounter{savededitora}{0}
+\setcounter{editorb}{0}
+\setcounter{savededitorb}{0}
+\setcounter{editorc}{0}
+\setcounter{savededitorc}{0}
+\setcounter{foreword}{0}
+\setcounter{savedforeword}{0}
+\setcounter{holder}{0}
+\setcounter{savedholder}{0}
+\setcounter{introduction}{0}
+\setcounter{savedintroduction}{0}
+\setcounter{namea}{0}
+\setcounter{savednamea}{0}
+\setcounter{nameb}{0}
+\setcounter{savednameb}{0}
+\setcounter{namec}{0}
+\setcounter{savednamec}{0}
+\setcounter{translator}{0}
+\setcounter{savedtranslator}{0}
+\setcounter{shortauthor}{0}
+\setcounter{savedshortauthor}{0}
+\setcounter{shorteditor}{0}
+\setcounter{savedshorteditor}{0}
+\setcounter{narrator}{0}
+\setcounter{savednarrator}{0}
+\setcounter{execproducer}{0}
+\setcounter{savedexecproducer}{0}
+\setcounter{execdirector}{0}
+\setcounter{savedexecdirector}{0}
+\setcounter{with}{0}
+\setcounter{savedwith}{0}
+\setcounter{labelname}{0}
+\setcounter{savedlabelname}{0}
+\setcounter{institution}{0}
+\setcounter{savedinstitution}{0}
+\setcounter{lista}{0}
+\setcounter{savedlista}{0}
+\setcounter{listb}{0}
+\setcounter{savedlistb}{0}
+\setcounter{listc}{0}
+\setcounter{savedlistc}{0}
+\setcounter{listd}{0}
+\setcounter{savedlistd}{0}
+\setcounter{liste}{0}
+\setcounter{savedliste}{0}
+\setcounter{listf}{0}
+\setcounter{savedlistf}{0}
+\setcounter{location}{0}
+\setcounter{savedlocation}{0}
+\setcounter{organization}{0}
+\setcounter{savedorganization}{0}
+\setcounter{origlocation}{0}
+\setcounter{savedoriglocation}{0}
+\setcounter{origpublisher}{0}
+\setcounter{savedorigpublisher}{0}
+\setcounter{publisher}{0}
+\setcounter{savedpublisher}{0}
+\setcounter{language}{0}
+\setcounter{savedlanguage}{0}
+\setcounter{origlanguage}{0}
+\setcounter{savedoriglanguage}{0}
+\setcounter{citation}{0}
+\setcounter{savedcitation}{0}
+\setcounter{pageref}{0}
+\setcounter{savedpageref}{0}
+\setcounter{textcitecount}{0}
+\setcounter{textcitetotal}{0}
+\setcounter{textcitemaxnames}{0}
+\setcounter{biburlbigbreakpenalty}{100}
+\setcounter{biburlbreakpenalty}{200}
+\setcounter{biburlnumpenalty}{0}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{0}
+\setcounter{smartand}{0}
+\setcounter{bbx:relatedcount}{0}
+\setcounter{bbx:relatedtotal}{0}
+}

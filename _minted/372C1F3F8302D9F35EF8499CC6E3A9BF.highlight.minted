@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{dataset}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{ee}\PYG{p}{.}\PYG{n+nx}{ImageCollection}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}GOOGLE/SATELLITE\PYGZus{}EMBEDDING/V1/ANNUAL\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{  }\PYG{p}{.}\PYG{n+nx}{filterDate}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}2024\PYGZhy{}01\PYGZhy{}01\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}2024\PYGZhy{}01\PYGZhy{}02\PYGZsq{}}\PYG{p}{)}
+\PYG{+w}{  }\PYG{p}{.}\PYG{n+nx}{filterBounds}\PYG{p}{(}\PYG{n+nx}{aoiLambayeque}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{imageAlpha}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{dataset}\PYG{p}{.}\PYG{n+nx}{mosaic}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{clip}\PYG{p}{(}\PYG{n+nx}{aoiLambayeque}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{samples}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{imageAlpha}\PYG{p}{.}\PYG{n+nx}{sampleRegions}\PYG{p}{(}\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n+nx}{collection}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{etiquetas}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n+nx}{properties}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}clase\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n+nx}{scale}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{20}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

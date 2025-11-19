@@ -1,0 +1,175 @@
+\documentclass{article}
+
+%===============================
+%
+%          📦 Paquetes
+%
+%===============================
+
+% === Configuración del documento y tipografía ===
+\usepackage[a4paper, top=3cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+% === Gráficos y representaciones visuales ===
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes, calc, decorations.pathmorphing, shapes.geometric}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{chemfig}
+
+
+
+
+% === Estilo y personalización ===
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{tocloft} 
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{caption}
+
+% === Matemáticas y símbolos ===
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+
+% === Estructura y disposición del contenido ===
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{pdflscape}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{minted}
+
+
+% === Hipervínculos y referencias ===
+\usepackage{tocbibind}
+\usepackage[colorlinks=true, linkcolor=black]{hyperref}
+
+%===============================
+%
+%          ⬆️⬇️ Cabeceras
+%
+%===============================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\includegraphics[width=3cm,clip,trim=1cm 8.5cm 1cm 8.5cm]{assets/logo.png}}
+\vspace{1mm}\fancyhead[R]{\textit{Huatay Salcedo, Luis Elías}\vspace{1mm}}
+\fancyfoot[R]{\thepage}
+\setlength{\headheight}{22.9188pt}
+\addtolength{\topmargin}{-5.64944pt}
+
+%======================================
+%
+%          📑 Espaciado de Párrafos
+%
+%======================================
+
+\titlespacing*{\section}{0pt}{0.2ex}{0.2ex}
+\titlespacing*{\subsection}{0pt}{0.1ex}{0.1ex}
+\titlespacing*{\subsubsection}{0pt}{0.1ex}{0.1ex}
+\setlength{\parskip}{1.5em}
+\setlength{\parindent}{0pt}
+\usepackage{ragged2e} 
+
+%======================================
+%
+%          📕 Estrucura del título
+%
+\title{
+  \pagenumbering{gobble}
+  \vspace{1cm}
+  \includegraphics[width=5cm,clip,trim=6cm 6cm 6cm 6cm]{./assets/isotipo.jpg} \\
+  \vspace{0.5cm}
+  \textbf{Escuela Superior Técnica EST SENCICO} \\
+  \vspace{0.5cm}
+  \text{MONOGRAFÍA} \\
+  \vspace{1cm}
+  \textbf{USO DE INFORMACIÓN SATELITAL EN AGRICULTURA DE PRECISIÓN: FUNDAMENTOS TEÓRICOS Y APLICACIÓN PRÁCTICA EN LA CLASIFICACIÓN DE CUERPOS AGRÍCOLAS} \\
+  \vspace{1cm}
+  \large \textbf{Para acceder al título de Profesional Técnico en Geomática} \\
+}
+
+\author{
+  \begin{tabular}{ll}
+    \textbf{Huatay Salcedo, Luis Elías}\\
+  \end{tabular} \\
+  \texttt{Sede Central}\\
+  \texttt{Geomática}\\
+  \texttt{S71809640}\\
+}
+
+\date{\today}
+
+% ===============================
+%
+%          📚 Bibliografía
+%
+% ===============================
+
+\usepackage{csquotes}
+\usepackage[backend=biber,style=apa]{biblatex}
+\AtEveryBibitem{\clearfield{keywords}\clearfield{file}\clearfield{abstract}}
+\addbibresource{AlphaEarthF.bib}
+\renewcommand*{\bibfont}{\small}
+
+
+\begin{document}
+\maketitle
+
+%======================================
+%
+%          📚 Inicio del documento
+%
+%======================================
+
+\newpage
+
+\vspace*{0.45\textheight}
+
+\begin{flushright}
+\begin{minipage}{0.45\textwidth}
+\begin{spacing}{1.1}
+Dedico este trabajo a mi esposa, por su notable paciencia y confianza en mí. A mis padres porque su ausencia me dio la oportunidad de descubrir mi propia fortaleza. A mis profesores, pero en especial al Ing. Kevin Sanchez por su guía e inspiración brindada durante mi camino académico.
+\end{spacing}
+\end{minipage}
+\end{flushright}
+
+\newpage
+
+\begin{center}
+\Large\bfseries ÍNDICE
+\end{center}
+\begingroup
+\let\clearpage\relax
+\renewcommand{\contentsname}{} % evita que salga "Índice" de nuevo
+\tableofcontents
+\endgroup
+
+
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}  
+
+\include{components/introduccion/introduccion}
+
+\include{components/fundamentosTeoricos/fundamentosTeoricos}
+
+\include{components/aplicacionPractica/aplicacionPractica}
+
+\begin{multicols}{2}
+\begingroup
+\small
+\printbibliography
+\endgroup
+\end{multicols}
+
+\end{document}

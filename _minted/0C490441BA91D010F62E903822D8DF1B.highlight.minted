@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{sentinel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{ee}\PYG{p}{.}\PYG{n+nx}{ImageCollection}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}COPERNICUS/S2\PYGZus{}SR\PYGZus{}HARMONIZED\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{      }\PYG{p}{.}\PYG{n+nx}{filterDate}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}2024\PYGZhy{}01\PYGZhy{}01\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}2024\PYGZhy{}01\PYGZhy{}02\PYGZsq{}}\PYG{p}{)}
+\PYG{+w}{      }\PYG{p}{.}\PYG{n+nx}{filterBounds}\PYG{p}{(}\PYG{n+nx}{aoiLambayeque}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{visParamsSentinel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{n+nx}{bands}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}B4\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}B3\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}B2\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n+nx}{min}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n+nx}{max}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{3000}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n+nx}{gamma}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1.2}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\end{MintedVerbatim}

@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{withRandom}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{samples}\PYG{p}{.}\PYG{n+nx}{randomColumn}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}random\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{split}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.7}\PYG{p}{;}
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{trainingSamples}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{withRandom}\PYG{p}{.}\PYG{n+nx}{filter}\PYG{p}{(}\PYG{n+nx}{ee}\PYG{p}{.}\PYG{n+nx}{Filter}\PYG{p}{.}\PYG{n+nx}{lt}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}random\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{split}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{validationSamples}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{withRandom}\PYG{p}{.}\PYG{n+nx}{filter}\PYG{p}{(}\PYG{n+nx}{ee}\PYG{p}{.}\PYG{n+nx}{Filter}\PYG{p}{.}\PYG{n+nx}{gte}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}random\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{split}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n+nx}{classifier}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{ee}\PYG{p}{.}\PYG{n+nx}{Classifier}\PYG{p}{.}\PYG{n+nx}{smileRandomForest}\PYG{p}{(}\PYG{l+m+mf}{200}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{train}\PYG{p}{(}\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n+nx}{features}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{trainingSamples}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n+nx}{classProperty}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}clase\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n+nx}{inputProperties}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{imageAlpha}\PYG{p}{.}\PYG{n+nx}{bandNames}\PYG{p}{(}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{n+nx}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Total de muestras:\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{samples}\PYG{p}{.}\PYG{n+nx}{size}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nx}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Muestras de entrenamiento:\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{trainingSamples}\PYG{p}{.}\PYG{n+nx}{size}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nx}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Muestras de validación:\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{validationSamples}\PYG{p}{.}\PYG{n+nx}{size}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+
+\end{MintedVerbatim}
