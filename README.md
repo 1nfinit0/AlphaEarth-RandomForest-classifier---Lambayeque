@@ -832,17 +832,17 @@ Si utilizas este proyecto en tu investigación, por favor cita:
 
 ### 🌍 Clasificando Agricultura. Alimentando Futuro. 🌾
 
-**Hecho en 🇵🇪 Perú | 2024**
+**Hecho en 🇵🇪 Perú | 2025**
 
 [![GitHub](https://img.shields.io/badge/GitHub-1nfinit0-black)](https://github.com/1nfinit0)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-*Monografía de Titulación - EST SENCICO*
+*Proyecto de Titulación - EST SENCICO*
 
 </div>
 
 ---
 
-**Última actualización**: Noviembre 2024  
+**Última actualización**: Noviembre 2025
 **Versión**: 1.0.0  
 **Estado**: Completado ✅
